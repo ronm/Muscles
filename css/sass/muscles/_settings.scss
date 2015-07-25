@@ -1,0 +1,45 @@
+///***************
+//*** SETTINGS ***
+//***************/
+
+// SUBDIVISIONS
+
+// Number of columns/rows to use 
+// when calculating height/width
+// typically 12 (default) or 16
+
+$subdivisions: 12;
+//$subdivisions_words: ("one", "two","three","four","five","six","seven","eight","nine","ten", "eleven", "twelve");
+
+
+// BOX PADDING
+
+// also effects compensating negative margin on .group
+
+$gutter: .5rem;
+
+
+
+// MEDIA QUERY BREAKPOINTS
+
+// this will create flexbox within 
+// media queries and provide 
+// (small, medium, large, etc.) class names
+
+$mediaqueries: (
+    small: ( min : 0rem, max: 40rem ),
+    medium: ( min: 40.063rem, max: 64rem ),
+    large: ( min: 64.063rem, max: 99999999rem )
+    //large: ( min: 64.063rem, max: 90rem )
+    //xlarge: ( min: 90.063rem, max: 120rem )
+    //xxlarge: ( min: 120.063rem, max: 99999999rem )
+);
+
+
+// CLASSES
+
+// By default flex items have class .box
+$flex_item_class: "box";
+
+// By default flex container has class .group
+$flex_container_class: "group";

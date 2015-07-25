@@ -1,0 +1,240 @@
+///***********
+//*** BASE ***
+//***********/
+
+
+
+.frame { overflow: scroll; }
+
+.#{$flex_container_class} {
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+
+// MQ FLEX CSS
+
+// formatted to be passed through
+// loop to generate meida queries
+
+@mixin base($breakpoint: '') {
+
+	$size: if($breakpoint!='', $breakpoint, '');
+	$separator: if($breakpoint!='', '-', '');
+
+	.#{$flex_item_class}#{$separator}#{$size} {
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+	}
+
+	// CONTAINER
+
+	.#{$flex_container_class}#{$separator}#{$size} {
+		@include flex-align-content();
+		@include flex-align();
+		@include flex-display();
+		@include flex-direction();
+		@include flex-wrap();
+		//@include flex-justify();
+
+
+		
+		&:not([class*="vertical"]) {
+			margin-left: -#{$gutter};
+			margin-right: -#{$gutter};
+		}
+
+		&.#{$size}#{$separator}vertical {
+			margin-top: -#{$gutter};
+			margin-bottom: -#{$gutter};
+		}
+	
+	}
+
+	.#{$flex_container_class}.#{$size}#{$separator}fill:not([class*="vertical"]) {
+		margin-left: -.5rem !important;
+		margin-right: -.5rem !important;
+		width: calc(100% + 1rem) !important;
+	}
+
+	.#{$flex_container_class}.#{$size}#{$separator}fill.#{$flex_container_class}.#{$size}#{$separator}vertical {
+		margin-top: -.5rem !important;
+		margin-bottom: -.5rem !important;
+		height: calc(100% + 1rem) !important;
+	}
+
+
+
+	// ITEMS
+	/* base css for flex items (.#{$flex_item_class}) */
+	.#{$size}#{$separator}#{$flex_item_class} {
+		//@include flex-order();
+		@include flex-grow();
+		@include flex-shrink();
+		@include flex-basis();
+		//@include flex-self-align();
+	}
+
+	.#{$size}#{$separator}#{$flex_container_class} {
+		&:not(.#{$size}#{$separator}vertical) > [class*="#{$flex_item_class}"] {
+			padding-left: $gutter;
+			padding-right: $gutter;
+		}
+
+		@if $size {
+			&.vertical > .#{$size}#{$separator}#{$flex_item_class} {
+				padding-top: $gutter;
+				padding-bottom: $gutter;
+				width: 100%;
+			}
+		}
+
+	}
+
+
+	// CONTAINER
+
+
+	// justify-content (main axis)
+	.#{$flex_container_class}#{$separator}#{$size}.start { @include flex-justify(flex-start);border:1px solid red; }
+	.#{$flex_container_class}#{$separator}#{$size}.end { @include flex-justify(flex-end); }
+	.#{$flex_container_class}#{$separator}#{$size}.center { @include flex-justify(center); }
+	.#{$flex_container_class}#{$separator}#{$size}.between { @include flex-justify(space-between); }
+	.#{$flex_container_class}#{$separator}#{$size}.around { @include flex-justify(space-around); }
+
+	// align-content (cross axis)
+	.#{$flex_container_class}#{$separator}#{$size}.cross-start { @include flex-align-content(flex-start); }
+	.#{$flex_container_class}#{$separator}#{$size}.cross-end { @include flex-align-content(flex-end); }
+	.#{$flex_container_class}#{$separator}#{$size}.cross-center { @include flex-align-content(center); }
+	.#{$flex_container_class}#{$separator}#{$size}.cross-between { @include flex-align-content(space-between); }
+	.#{$flex_container_class}#{$separator}#{$size}.cross-around { @include flex-align-content(space-around); }
+	.#{$flex_container_class}#{$separator}#{$size}.cross-stretch { @include flex-align-content(stretch); }
+
+	// align-items (cross axis)
+	.#{$flex_container_class}#{$separator}#{$size}.cross-align-start { @include flex-align(flex-start); }
+	.#{$flex_container_class}#{$separator}#{$size}.cross-align-end { @include flex-align(flex-end); }
+	.#{$flex_container_class}#{$separator}#{$size}.cross-align-center { @include flex-align(center); }
+	.#{$flex_container_class}#{$separator}#{$size}.cross-align-baseline { @include flex-align(baseline); }
+	.#{$flex_container_class}#{$separator}#{$size}.cross-align-stretch { @include flex-align(stretch); }
+
+	// display
+	//.#{$flex_container_class}.#{$size}flex { @include flex-display(); }
+	.#{$flex_container_class}.#{$size}#{$separator}inline { @include flex-display('inline') }
+
+	// direction
+	//.#{$flex_container_class}.#{$size}horizontal { @include flex-direction(); }
+	.#{$flex_container_class}#{$separator}#{$size}.vertical { @include flex-direction(column); }
+
+	// reverse
+	//.#{$size}#{$flex_container_class}:not(.#{$size}reverse):not(#{$size}vertical) { @include flex-direction(row); }
+	.#{$flex_container_class}.#{$size}#{$separator}vertical:not(.#{$flex_container_class}.#{$size}reverse) { @include flex-direction(column); }
+
+	.#{$flex_container_class}.#{$size}#{$separator}reverse,
+	.#{$flex_container_class}.#{$size}#{$separator}horizontal.#{$size}#{$separator}reverse { @include flex-direction(row-reverse); }
+	.#{$flex_container_class}.#{$size}#{$separator}vertical.#{$size}#{$separator}reverse { @include flex-direction(column-reverse); }
+
+	// wrap
+	.#{$flex_container_class}.#{$size}#{$separator}reverse { @include flex-wrap(wrap-reverse); }
+	.#{$flex_container_class}.#{$size}#{$separator}nowrap { @include flex-wrap(nowrap); }
+
+
+	// ITEMS
+
+	// order
+	.#{$flex_item_class}.#{$size}#{$separator}sticky { @include flex-order(-99); }
+	.#{$flex_item_class}.#{$size}#{$separator}first { @include flex-order(-99); }
+	.#{$flex_item_class}.#{$size}#{$separator}last { @include flex-order(99); }
+
+	// size (basis)
+	@for $i from 1 through $subdivisions {
+		$percentage: percentage($i/$subdivisions);
+
+		// order
+		.#{$flex_item_class}.#{$size}#{$separator}order-#{$i} { @include flex-order($i); }
+
+		.#{$flex_container_class}:not(.#{$size}#{$separator}vertical)>.#{$size}#{$separator}#{$flex_item_class}-#{$i} {
+			@include flex-basis($percentage);
+			/*max-width: $percentage;*/
+		}
+
+		.#{$flex_container_class}:not(.#{$size}#{$separator}vertical) > .#{$flex_item_class}-#{$size}#{$separator}#{$i},
+		.#{$flex_container_class}.#{$size}#{$separator}items-#{$i} > .#{$flex_item_class} { width: $percentage;@include flex-basis($percentage); }
+
+		.#{$flex_container_class}.#{$size}#{$separator}vertical > .#{$flex_item_class}-#{$size}#{$separator}#{$i},
+		.#{$flex_container_class}.#{$size}#{$separator}vertical-#{$size}#{$separator}items-#{$i} > #{$flex_item_class},
+		.#{$flex_container_class}.#{$size}#{$separator}vertical-#{$size}#{$separator}items-#{$i} > .#{$size}-#{$flex_item_class} {
+			@include flex-basis($percentage);
+			height: $percentage;
+			/*max-height: $percentage;*/
+		}
+
+		/*.#{$flex_container_class}.#{$size}vertical.#{$size}nowrap > .#{$size}#{$flex_item_class}-#{$i},
+		.#{$flex_container_class}.#{$size}vertical.#{$size}nowrap.#{$size}items-#{$i} > .#{$flex_item_class},
+		.#{$flex_container_class}.#{$size}vertical.#{$size}nowrap.#{$size}items-#{$i} > .#{$size}#{$flex_item_class}-#{$i} { min-height: $percentage; }*/
+
+
+		// OFFSETS
+		// ltr row
+		.#{$flex_container_class}:not(.vertical) > .#{$size}#{$separator}#{$flex_item_class}-offset-#{$i} { margin-left: $percentage; }
+
+		// rtl row
+		.#{$flex_container_class}.reverse:not(.#{$size}#{$separator}vertical) > .#{$size}#{$separator}#{$flex_item_class}-offset-#{$i} { margin-right: $percentage; }
+
+		// ttb vertical
+		.#{$flex_container_class}[class~="vertical#{$separator}#{$size}"] > .#{$flex_item_class}[class~="#{$size}#{$separator}offset-#{$i}"] { margin-top: $percentage; }
+
+		// btt vertical
+		.#{$flex_container_class}[class~="vertical#{$separator}#{$size}"] > .#{$flex_item_class}[class~="#{$size}#{$separator}offset-#{$i}"] { margin-bottom: $percentage; }
+
+	}
+
+
+	.#{$flex_item_class} {
+	// fixed flex
+		.#{$flex_item_class}.fixed#{$separator}#{$size} {
+			@include flex-grow(0);
+			@include flex-shrink(0);
+		}
+
+		// fluid flex
+		.#{$flex_item_class}.fluid#{$separator}#{$size} {
+			@include flex-grow();
+			@include flex-shrink(0);
+			@include flex-basis(0);
+		}
+
+		// align (self)
+		.#{$flex_item_class}.#{$size}#{$separator}start { @include flex-self-align(flex-start); }
+		.#{$flex_item_class}.#{$size}#{$separator}end { @include flex-self-align(flex-end); }
+		.#{$flex_item_class}.#{$size}#{$separator}center { @include flex-self-align(center); }
+		.#{$flex_item_class}.#{$size}#{$separator}baseline { @include flex-self-align(baseline); }
+		.#{$flex_item_class}.#{$size}#{$separator}stretch { @include flex-self-align(stretch); }
+	}
+
+}
+
+
+
+// BASE FLEX CSS
+
+// include base flex css
+// without media queries
+
+@include base();
+
+
+
+// MQ FLEX CSS
+
+// include base flex css
+// with media queries
+
+//$mediaqueries: reverse($mediaqueries);
+@each $size, $bp in $mediaqueries {
+	//@media (min-width:nth($bp, 1)) {
+	@media (min-width: map-get($bp, "min") ) {
+		@include base($size);
+    }
+}
