@@ -120,19 +120,17 @@
 	.#{$flex_container_class}#{$separator}#{$size}.cross-align-stretch { @include flex-align(stretch); }
 
 	// display
-	//.#{$flex_container_class}.#{$size}flex { @include flex-display(); }
 	.#{$flex_container_class}.#{$size}#{$separator}inline { @include flex-display('inline') }
 
 	// direction
-	//.#{$flex_container_class}.#{$size}horizontal { @include flex-direction(); }
 	.#{$flex_container_class}#{$separator}#{$size}.vertical { @include flex-direction(column); }
 
 	// reverse
-	//.#{$size}#{$flex_container_class}:not(.#{$size}reverse):not(#{$size}vertical) { @include flex-direction(row); }
-	.#{$flex_container_class}.#{$size}#{$separator}vertical:not(.#{$flex_container_class}.#{$size}reverse) { @include flex-direction(column); }
+	/*.#{$flex_container_class}.#{$size}#{$separator}vertical:not(.#{$flex_container_class}.#{$size}reverse) { @include flex-direction(column); }*/
 
 	.#{$flex_container_class}.#{$size}#{$separator}reverse,
-	.#{$flex_container_class}.#{$size}#{$separator}horizontal.#{$size}#{$separator}reverse { @include flex-direction(row-reverse); }
+	/*.#{$flex_container_class}.#{$size}#{$separator}horizontal.#{$size}#{$separator}reverse { @include flex-direction(row-reverse); }*/
+	.#{$flex_container_class}.#{$size}#{$separator}reverse:not(.#{$size}#{$separator}vertical) { @include flex-direction(row-reverse); }
 	.#{$flex_container_class}.#{$size}#{$separator}vertical.#{$size}#{$separator}reverse { @include flex-direction(column-reverse); }
 
 	// wrap
