@@ -176,13 +176,9 @@
   -ms-flex-direction: column;
   flex-direction: column; }
 
-.group.vertical:not(.group.reverse) {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column; }
-
+/*.group.vertical:not(.group.reverse) { @include flex-direction(column); }*/
 .group.reverse,
-.group.horizontal.reverse {
+.group.reverse:not(.vertical) {
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse; }
@@ -902,18 +898,14 @@
   .group.small-inline {
     display: flex-inline; }
 
-  .group.small-vertical {
+  .group-small.vertical {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column; }
 
-  .group.small-vertical:not(.group.smallreverse) {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column; }
-
+  /*.group.small-vertical:not(.group.smallreverse) { @include flex-direction(column); }*/
   .group.small-reverse,
-  .group.small-horizontal.small-reverse {
+  .group.small-reverse:not(.small-vertical) {
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse; }
@@ -1632,18 +1624,14 @@
   .group.medium-inline {
     display: flex-inline; }
 
-  .group.medium-vertical {
+  .group-medium.vertical {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column; }
 
-  .group.medium-vertical:not(.group.mediumreverse) {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column; }
-
+  /*.group.medium-vertical:not(.group.mediumreverse) { @include flex-direction(column); }*/
   .group.medium-reverse,
-  .group.medium-horizontal.medium-reverse {
+  .group.medium-reverse:not(.medium-vertical) {
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse; }
@@ -2362,18 +2350,14 @@
   .group.large-inline {
     display: flex-inline; }
 
-  .group.large-vertical {
+  .group-large.vertical {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column; }
 
-  .group.large-vertical:not(.group.largereverse) {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column; }
-
+  /*.group.large-vertical:not(.group.largereverse) { @include flex-direction(column); }*/
   .group.large-reverse,
-  .group.large-horizontal.large-reverse {
+  .group.large-reverse:not(.large-vertical) {
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse; }
