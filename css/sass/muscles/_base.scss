@@ -13,6 +13,8 @@
 	margin-left: 0;
 }
 
+.#{$flex_item_class} { width: 100%; }
+
 // MQ FLEX CSS
 
 // formatted to be passed through
@@ -98,7 +100,7 @@
 
 
 	// justify-content (main axis)
-	.#{$flex_container_class}#{$separator}#{$size}.start { @include flex-justify(flex-start);border:1px solid red; }
+	.#{$flex_container_class}#{$separator}#{$size}.start { @include flex-justify(flex-start); }
 	.#{$flex_container_class}#{$separator}#{$size}.end { @include flex-justify(flex-end); }
 	.#{$flex_container_class}#{$separator}#{$size}.center { @include flex-justify(center); }
 	.#{$flex_container_class}#{$separator}#{$size}.between { @include flex-justify(space-between); }
@@ -158,7 +160,7 @@
 		}
 
 		.#{$flex_container_class}:not(.#{$size}#{$separator}vertical) > .#{$flex_item_class}-#{$size}#{$separator}#{$i},
-		.#{$flex_container_class}.#{$size}#{$separator}items-#{$i} > .#{$flex_item_class} { width: $percentage;@include flex-basis($percentage); }
+		.#{$flex_container_class}:not(.#{$size}#{$separator}vertical).#{$size}#{$separator}items-#{$i} > .#{$flex_item_class} { width: $percentage;@include flex-basis($percentage); }
 
 		.#{$flex_container_class}.#{$size}#{$separator}vertical > .#{$flex_item_class}-#{$size}#{$separator}#{$i},
 		.#{$flex_container_class}.#{$size}#{$separator}vertical-#{$size}#{$separator}items-#{$i} > #{$flex_item_class},
@@ -181,10 +183,10 @@
 		.#{$flex_container_class}.reverse:not(.#{$size}#{$separator}vertical) > .#{$size}#{$separator}#{$flex_item_class}-offset-#{$i} { margin-right: $percentage; }
 
 		// ttb vertical
-		.#{$flex_container_class}[class~="vertical#{$separator}#{$size}"] > .#{$flex_item_class}[class~="#{$size}#{$separator}offset-#{$i}"] { margin-top: $percentage; }
+		.#{$flex_container_class}-vertical#{$separator}#{$size} > .#{$flex_item_class}[class~="#{$size}#{$separator}offset-#{$i}"] { margin-top: $percentage; }
 
 		// btt vertical
-		.#{$flex_container_class}[class~="vertical#{$separator}#{$size}"] > .#{$flex_item_class}[class~="#{$size}#{$separator}offset-#{$i}"] { margin-bottom: $percentage; }
+		.#{$flex_container_class}-vertical#{$separator}#{$size} > .#{$flex_item_class}[class~="#{$size}#{$separator}offset-#{$i}"] { margin-bottom: $percentage; }
 
 	}
 
