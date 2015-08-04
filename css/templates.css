@@ -41,7 +41,12 @@ article.group {
 
 article [class*="box"],
 [class*="box"]:not(.group):empty:after,
-.group.vertical > .group[class*="box"] { height: 100%; }
+.group.vertical > .group[class*="box"] { /*height: 100%;*/ width: 100%; }
+
+.group .group .group > [class*="box"] { 
+	height: 100%;
+    overflow: hidden;
+}
 
 .group .group .group .group.items-4 [class*="box"] {
 	height: 46%;
@@ -54,4 +59,6 @@ article [class*="box"],
 	background: #f39c12;
 	content: "";
 	display: block;
+	height: 100%;
+	min-height: 8px;
 }
