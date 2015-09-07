@@ -373,7 +373,7 @@
 		<article>
 			<h2>responsive</h2>
 			<p>The following can be prefixed to all of the classes above</p>
-			<p><code>small-</code> [0rem, 40rem]</p>
+			<!--p><code>small-</code> [0rem, 40rem]</p-->
 			<p><code>medium-</code> [40.063rem, 64rem]</p>
 			<p><code>large-</code> [64.063rem, 99999999rem]</p>
 			
@@ -402,10 +402,9 @@
 			
 			<pre><code>$gutter: .5rem;</code></pre>
 			
-			<p>Currently small, medium, and large breakpoints defined. These can be modified or added to.</p>
+			<p>Currently Muscles is written mobile first and medium and large breakpoints defined. These can be modified or added to.</p>
 			
 <pre><code>$mediaqueries: (
-    small: ( min : 0rem, max: 40rem ),
     medium: ( min: 40.063rem, max: 64rem ),
     large: ( min: 64.063rem, max: 99999999rem )
 );</code></pre>	
@@ -413,7 +412,6 @@
 			<p>For example if <code>$mediaqueries</code> is modified as follows, additional class prefixes of <code>xlarge</code> and <code>xxlarge</code> become available.</p>
 			
 <pre><code>$mediaqueries: (
-    small: ( min : 0rem, max: 40rem ),
     medium: ( min: 40.063rem, max: 64rem ),
     large: ( min: 64.063rem, max: 90rem )
     xlarge: ( min: 90.063rem, max: 120rem )
