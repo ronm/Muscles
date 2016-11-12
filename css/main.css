@@ -1,4 +1,4 @@
-* {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;}
+* {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 html, body { height: 100%;margin:0;padding: 0; }
 body {background:#eee;font:300 100%/1.5 'Lato', sans-serif;}
 
@@ -109,7 +109,7 @@ pre {
 	color: #d35400;
 	font-size: 1.125rem;
 	margin: -.5rem .5rem 3rem;
-	overflow: scroll;
+	overflow: auto;
 	padding: 1rem 2rem;;
 }
 
@@ -140,18 +140,25 @@ p code {
 	height: 400px;
 }
 
-#grid-vertical > .group .box { padding-bottom: 2px;padding-top: 0;  }
-#grid-vertical > .group .box {
-	height: 100%;
+#grid-vertical > .group [class*="box"] {
+	padding: 0;
 }
 
+#grid-vertical > .group [class*="box"]:after {
+	border: 1px solid #000;
+}
 
 #grid-spacing-cross { margin-bottom: 1rem; }
 #grid-spacing-cross .group,
 #grid-alignment-cross .group {
 	border: 1px solid #d35400;
 	margin-bottom: .5rem;
-	min-height: 100px;
+	height: 150px;
+}
+
+#grid-spacing-cross .group > [class*="box"]:last-child,
+#grid-alignment-cross .group > [class*="box"] {
+	padding-bottom: 0;
 }
 
 #grid-spacing-cross .group .box { padding-bottom: 0;padding-top: 0;}

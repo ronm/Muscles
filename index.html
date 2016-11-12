@@ -8,7 +8,7 @@
 <meta name="description" content="Muscles - A CSS grid framework with a rich and easy to use api on top of the Flexbox Layout Module. Flexbox CSS.">
 <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/muscles.css">
+<link rel="stylesheet" href="css/muscles.prefix.min.css">
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -225,31 +225,31 @@
 
 			<h4>Spacing along cross axis (default: cross-center)</h4>
 			
-			<p>Classes <code>.cross-start</code>, <code>.cross-end</code>, <code>.cross-center</code>, <code>.cross-between</code>, <code>.cross-around</code>, <code>.cross-stetch</code>.</p>
+			<p>Classes <code>.cross-align-start</code>, <code>.cross-align-end</code>, <code>.cross-align-center</code>, <code>.cross-align-between</code>, <code>.cross-align-around</code>, <code>.cross-align-stetch</code>.</p>
 			
 			<p>This class has no effect when there is only one line of content along the main axis</p>
 			
-<div id="grid-spacing-cross" class="demo-grid"><div class="group cross-start">
+<div id="grid-spacing-cross" class="demo-grid"><div class="group cross-align-start">
 	<div class="box-12"></div>
 	<div class="box-12"></div>
 </div>
-<div class="group cross-end">
+<div class="group cross-align-end">
 	<div class="box-12"></div>
 	<div class="box-12"></div>
 </div>
-<div class="group cross-center">
+<div class="group cross-align-center">
 	<div class="box-12"></div>
 	<div class="box-12"></div>
 </div>
-<div class="group cross-between">
+<div class="group cross-align-between">
 	<div class="box-12"></div>
 	<div class="box-12"></div>
 </div>
-<div class="group cross-around">
+<div class="group cross-align-around">
 	<div class="box-12"></div>
 	<div class="box-12"></div>
 </div>
-<div class="group cross-stretch">
+<div class="group cross-align-stretch">
 	<div class="box-12"></div>
 	<div class="box-12"></div>
 </div></div>			
@@ -261,27 +261,27 @@
 
 			<h4>Alignment along cross axis (default: cross-align-center)</h4>
 
-			<p>Classes <code>.cross-align-start</code>, <code>.cross-align-end</code>, <code>.cross-align-center</code>, <code>.cross-align-baseline</code>, <code>.cross-align-stetch</code>.</p>			
+			<p>Classes <code>.cross-start</code>, <code>.cross-end</code>, <code>.cross-center</code>, <code>.cross-baseline</code>, <code>.cross-stetch</code>.</p>			
 			
-<div id="grid-alignment-cross" class="demo-grid"><div class="group cross-align-start">
-	<div class="box-2"></div>
-	<div class="box-2"></div>
+<div id="grid-alignment-cross" class="demo-grid"><div class="group cross-start">
+	<div class="box-6"></div>
+	<div class="box-6"></div>
 </div>
-<div class="group cross-align-end">
-	<div class="box-2"></div>
-	<div class="box-2"></div>
+<div class="group cross-end">
+	<div class="box-6"></div>
+	<div class="box-6"></div>
 </div>
-<div class="group cross-align-center">
-	<div class="box-2"></div>
-	<div class="box-2"></div>
+<div class="group cross-center">
+	<div class="box-6"></div>
+	<div class="box-6"></div>
 </div>
-<div class="group cross-align-baseline">
-	<div class="box-2"></div>
-	<div class="box-2"></div>
+<div class="group cross-baseline">
+	<div class="box-6"></div>
+	<div class="box-6"></div>
 </div>
-<div class="group cross-align-stetch">
-	<div class="box-2"></div>
-	<div class="box-2"></div>
+<div class="group cross-stetch">
+	<div class="box-6"></div>
+	<div class="box-6"></div>
 </div></div>				
 		
 			<pre><code data-for="grid-alignment-cross"></code></pre>
